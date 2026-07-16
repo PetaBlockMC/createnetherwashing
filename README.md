@@ -29,9 +29,9 @@ An active column (fan spinning fast enough above a watered basin) **always consu
 **100 mB/s at 64 RPM**, +25% per additional 64 RPM (scaling smoothly): 125 mB/s @128, 150 mB/s @192, 175 mB/s @256.
 Set `drainRequiresItems = true` in the server config if you'd rather only pay water while items are actually washing.
 
-### Blue ice tub
+### Blue ice tube
 
-Enclose every gap block horizontally with **3 blue ice + 1 solid closing block** (a "tub") and the column washes at **full speed at any distance**, with water consumption **divided by 5** (20 mB/s @64 RPM = 1/50 bucket per second). The RPM requirement per block still applies — long columns stay stress-expensive.
+Enclose every gap block horizontally with **3 blue ice + 1 solid closing block** (a "tube") and the column washes at **full speed at any distance**, with water consumption **divided by 5** (20 mB/s @64 RPM = 1/50 bucket per second). The RPM requirement per block still applies — long columns stay stress-expensive.
 
 All numbers are configurable (server config `createnetherwashing-server.toml`).
 

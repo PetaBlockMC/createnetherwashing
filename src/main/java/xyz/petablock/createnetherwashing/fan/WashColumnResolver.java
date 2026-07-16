@@ -97,7 +97,7 @@ public class WashColumnResolver {
 		if (rpm < (float) NWConfig.rpmPerBlock() * gap)
 			return null;
 
-		boolean iced = isIceTub(level, basinPos, gap);
+		boolean iced = isIceTube(level, basinPos, gap);
 		WashColumn column = new WashColumn(basinPos, cursor.immutable(), gap, iced, rpm, fluid);
 		if (level instanceof ServerLevel serverLevel)
 			WashColumnTracker.track(serverLevel, column.basinPos());
@@ -129,10 +129,10 @@ public class WashColumnResolver {
 	}
 
 	/**
-	 * A column is an "ice tub" when every gap block is horizontally enclosed by at least
+	 * A column is an "ice tube" when every gap block is horizontally enclosed by at least
 	 * 3 blue ice blocks, with the remaining side (if any) closed off by a solid face.
 	 */
-	private static boolean isIceTub(Level level, BlockPos basinPos, int gap) {
+	private static boolean isIceTube(Level level, BlockPos basinPos, int gap) {
 		for (int i = 1; i <= gap; i++) {
 			BlockPos p = basinPos.above(i);
 			int ice = 0;

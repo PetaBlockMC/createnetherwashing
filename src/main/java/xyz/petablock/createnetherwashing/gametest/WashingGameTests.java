@@ -87,16 +87,16 @@ public class WashingGameTests {
 	}
 
 	@GameTest(template = TEMPLATE, timeoutTicks = 400)
-	public static void iceTubNormalizesDistance(GameTestHelper helper) {
+	public static void iceTubeNormalizesDistance(GameTestHelper helper) {
 		setupColumn(helper, 3, 192, true);
 		ItemEntity[] item = spawnGravelDelayed(helper, 3.5f);
 		helper.succeedWhen(() -> {
 			WashColumn column = resolve(helper);
-			helper.assertTrue(column != null && column.iced(), "ice tub not detected");
+			helper.assertTrue(column != null && column.iced(), "ice tube not detected");
 			helper.assertTrue(item[0] != null, "item not spawned yet");
 			// full speed tier despite gap 3
 			helper.assertTrue("createnetherwashing:basin_washing".equals(processingType(item[0])),
-				"ice tub column should wash at the full-speed tier, got: '" + processingType(item[0]) + "'");
+				"ice tube column should wash at the full-speed tier, got: '" + processingType(item[0]) + "'");
 		});
 	}
 

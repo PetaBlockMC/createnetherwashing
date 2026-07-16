@@ -25,7 +25,7 @@ public class NWFanProcessingTypes {
 	}
 
 	/**
-	 * The processing type tier for a column: an ice tub washes at full speed at any distance,
+	 * The processing type tier for a column: an ice tube washes at full speed at any distance,
 	 * otherwise each extra block of gap slows processing down.
 	 */
 	public static BasinWashingType forColumn(WashColumn column) {

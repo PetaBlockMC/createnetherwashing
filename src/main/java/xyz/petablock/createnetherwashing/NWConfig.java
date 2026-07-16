@@ -24,7 +24,7 @@ public class NWConfig {
 			.comment("Fractional increase of water consumption per additional rpmPerBlock of fan speed (0.25 = +25% per 64 RPM)")
 			.defineInRange("consumptionStepIncrease", 0.25, 0.0, 10.0);
 		ICE_DIVISOR = builder
-			.comment("Water consumption divisor while the column is fully encased in a blue ice tub")
+			.comment("Water consumption divisor while the column is fully encased in a blue ice tube")
 			.defineInRange("iceConsumptionDivisor", 5.0, 1.0, 100.0);
 		DRAIN_REQUIRES_ITEMS = builder
 			.comment("If true, water is only consumed while washable items are actually in the column;",

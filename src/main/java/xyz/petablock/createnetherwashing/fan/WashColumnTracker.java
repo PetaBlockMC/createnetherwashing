@@ -82,7 +82,7 @@ public class WashColumnTracker {
 
 	/**
 	 * Linear scaling: baseConsumption mB/s at rpmPerBlock, +stepIncrease per additional
-	 * rpmPerBlock of speed ("smooth stepping"), divided by iceDivisor inside an ice tub.
+	 * rpmPerBlock of speed ("smooth stepping"), divided by iceDivisor inside an ice tube.
 	 */
 	private static float consumptionPerTick(WashColumn column) {
 		float rpmPerBlock = NWConfig.rpmPerBlock();
