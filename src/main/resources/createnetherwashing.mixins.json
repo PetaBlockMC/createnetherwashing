@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "xyz.petablock.createnetherwashing.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "FanProcessingMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
