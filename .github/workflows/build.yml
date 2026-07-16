@@ -22,6 +22,12 @@ jobs:
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          # NeoForm runtime's generated-artifact cache is ~1GB and restored inconsistently
+          # across NeoForge version changes (mixed-version patched jars -> NoClassDefFoundError
+          # at server boot). Regenerate it each run instead of persisting it.
+          gradle-home-cache-excludes: |
+            caches/neoformruntime
 
       # Tag v1.2.3 -> jar built as version 1.2.3, overriding gradle.properties
       - name: Derive version from tag
