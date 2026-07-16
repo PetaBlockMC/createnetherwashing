@@ -46,3 +46,5 @@ jobs:
         with:
           files: build/libs/*.jar
           generate_release_notes: true
+          # SemVer convention: tags with a hyphen (v0.2.0-beta.1) are prereleases
+          prerelease: ${{ contains(github.ref_name, '-') }}
