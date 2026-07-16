@@ -1,0 +1,48 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # create releases on tag pushes
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      # Tag v1.2.3 -> jar built as version 1.2.3, overriding gradle.properties
+      - name: Derive version from tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: echo "VERSION_ARG=-Pmod_version=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
+
+      - name: Build
+        run: ./gradlew build ${VERSION_ARG}
+
+      - name: Run gametests
+        run: ./gradlew runGameTestServer ${VERSION_ARG}
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: createnetherwashing
+          path: build/libs/*.jar
+
+      - name: Create release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/libs/*.jar
+          generate_release_notes: true
